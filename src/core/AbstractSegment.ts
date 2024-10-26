@@ -1,9 +1,9 @@
 import { Segment } from './interfaces';
 
 abstract class AbstractSegment<X, Y> implements Segment<X, Y> {
-  private next: Segment | undefined;
+  private next: Segment<X, Y> | undefined;
 
-  public constructor(seg?: Segment) {
+  public constructor(seg?: Segment<X, Y>) {
     this.next = seg;
 
     // We want to prevent subclasses from overriding the setNext and getNext
@@ -24,11 +24,11 @@ abstract class AbstractSegment<X, Y> implements Segment<X, Y> {
 
   public abstract fulfill(arg: X): Y;
 
-  public setNext(seg: Segment): void {
+  public setNext(seg: Segment<X, Y>): void {
     this.next = seg;
   }
 
-  public getNext(): Segment | undefined {
+  public getNext(): Segment<X, Y> | undefined {
     return this.next;
   }
 }

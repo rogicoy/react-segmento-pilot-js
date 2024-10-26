@@ -5,6 +5,6 @@ export interface SegmentPayload {
 export interface Segment<X = unknown, Y = unknown> {
   inScope: (arg: X) => boolean;
   fulfill: (arg: X) => Y;
-  setNext: (seg: Segment) => void;
-  getNext: () => Segment | undefined;
+  setNext: (seg: Segment<X, Y>) => void;
+  getNext: () => Segment<X, Y> | undefined;
 }

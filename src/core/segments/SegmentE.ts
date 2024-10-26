@@ -4,7 +4,7 @@ import { Segment, SegmentPayload } from '../interfaces';
 export const WATCH_WORD = 'e';
 
 class SegmentE extends AbstractSegment<SegmentPayload, string> {
-  public constructor(seg: Segment) {
+  public constructor(seg?: Segment<SegmentPayload, string>) {
     super(seg);
   }
 
