@@ -1,6 +1,6 @@
-import { Segment, SegmentPayload } from './interfaces';
+import { Segment } from './interfaces';
 
-abstract class AbstractSegment implements Segment<SegmentPayload, string> {
+abstract class AbstractSegment<X, Y> implements Segment<X, Y> {
   private next: Segment | undefined;
 
   public constructor(seg?: Segment) {
@@ -20,9 +20,9 @@ abstract class AbstractSegment implements Segment<SegmentPayload, string> {
     }
   }
 
-  public abstract inScope(arg: SegmentPayload): boolean;
+  public abstract inScope(arg: X): boolean;
 
-  public abstract fulfill(arg: SegmentPayload): string;
+  public abstract fulfill(arg: X): Y;
 
   public setNext(seg: Segment): void {
     this.next = seg;
