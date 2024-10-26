@@ -11,6 +11,18 @@ class Wheel<X, Y> {
     this.live = this.head;
   }
 
+  public getHead(): Segment<X, Y> {
+    return this.head;
+  }
+
+  public getTail(): Segment<X, Y> {
+    return this.tail;
+  }
+
+  public getLive(): Segment<X, Y> {
+    return this.live;
+  }
+
   public addSegment(seg: Segment<X, Y>): void {
     seg.setNext(this.head);
     this.tail.setNext(seg);
