@@ -1,7 +1,7 @@
 import AbstractSegment from '../AbstractSegment';
 import { Segment, SegmentPayload } from '../interfaces';
 
-export const WATCHWORD = 'j';
+export const WATCHWORD = 'mangosteen';
 
 class SegmentJ extends AbstractSegment<SegmentPayload, string> {
   public constructor(seg?: Segment<SegmentPayload, string>) {
@@ -9,11 +9,12 @@ class SegmentJ extends AbstractSegment<SegmentPayload, string> {
   }
 
   public inScope(arg: SegmentPayload): boolean {
-    return arg.watchWord === WATCHWORD;
+    return arg.watchword === WATCHWORD;
   }
 
   public fulfill(arg: SegmentPayload): string {
-    return `You are in Segment J with arg ${arg}`;
+    console.log('Segment-J:', arg);
+    return `You are in Segment-J which requires mangosteen to activate.`;
   }
 }
 

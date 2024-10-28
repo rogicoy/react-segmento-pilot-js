@@ -1,5 +1,5 @@
 export interface SegmentPayload {
-  watchWord: string;
+  watchword: string;
 }
 
 /**
