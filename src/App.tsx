@@ -6,7 +6,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Typography,
 } from '@mui/material';
 import { WATCHWORDS } from './core/segments/watchwords';
 import { useMemo, useState } from 'react';
@@ -19,8 +18,6 @@ import SegmentE from './core/segments/SegmentE';
 import SegmentF from './core/segments/SegmentF';
 import SegmentG from './core/segments/SegmentG';
 import SegmentH from './core/segments/SegmentH';
-import SegmentI from './core/segments/SegmentI';
-import SegmentJ from './core/segments/SegmentJ';
 
 const App = () => {
   const [watchword, setWatchword] = useState(WATCHWORDS[0]);
@@ -34,8 +31,6 @@ const App = () => {
     wheel.addSegment(new SegmentF());
     wheel.addSegment(new SegmentG());
     wheel.addSegment(new SegmentH());
-    wheel.addSegment(new SegmentI());
-    wheel.addSegment(new SegmentJ());
     return wheel;
   }, []);
 
@@ -52,8 +47,10 @@ const App = () => {
               value={watchword}
               onChange={(event) => setWatchword(event.target.value)}
             >
-              {WATCHWORDS.map((word) => (
-                <MenuItem value={word}>{word}</MenuItem>
+              {WATCHWORDS.map((word, index) => (
+                <MenuItem key={index} value={word}>
+                  {word}
+                </MenuItem>
               ))}
             </Select>
             <FormHelperText>
@@ -64,9 +61,7 @@ const App = () => {
             </FormHelperText>
           </FormControl>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 6 }}>
-          <Typography variant='h3'>{wheel.fulfill({ watchword })}</Typography>
-        </Grid2>
+        <Grid2 size={{ xs: 12, md: 6 }}>{wheel.fulfill({ watchword })}</Grid2>
       </Grid2>
     </Box>
   );
