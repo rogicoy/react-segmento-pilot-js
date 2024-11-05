@@ -4,6 +4,10 @@ import { Segment, SegmentPayload } from '../interfaces';
 
 export const WATCHWORD = 'banana';
 
+/**
+ * SegmentB serves as an example to illustrate the structure and functionality of an
+ * actual segment component.
+ */
 class SegmentB extends AbstractSegment<SegmentPayload, JSX.Element> {
   public constructor(seg?: Segment<SegmentPayload, JSX.Element>) {
     super(seg);

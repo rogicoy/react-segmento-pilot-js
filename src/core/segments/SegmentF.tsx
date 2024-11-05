@@ -4,6 +4,10 @@ import { Segment, SegmentPayload } from '../interfaces';
 
 export const WATCHWORD = 'lanzones';
 
+/**
+ * SegmentF serves as an example to illustrate the structure and functionality of an
+ * actual segment component.
+ */
 class SegmentF extends AbstractSegment<SegmentPayload, JSX.Element> {
   public constructor(seg?: Segment<SegmentPayload, JSX.Element>) {
     super(seg);
