@@ -24,13 +24,13 @@ const App = () => {
 
   const wheel = useMemo(() => {
     const wheel = new Wheel(new SegmentA());
-    wheel.addSegment(new SegmentB());
-    wheel.addSegment(new SegmentC());
-    wheel.addSegment(new SegmentD());
-    wheel.addSegment(new SegmentE());
-    wheel.addSegment(new SegmentF());
-    wheel.addSegment(new SegmentG());
-    wheel.addSegment(new SegmentH());
+    wheel.appendSegment(new SegmentB());
+    wheel.appendSegment(new SegmentC());
+    wheel.appendSegment(new SegmentD());
+    wheel.appendSegment(new SegmentE());
+    wheel.appendSegment(new SegmentF());
+    wheel.appendSegment(new SegmentG());
+    wheel.appendSegment(new SegmentH());
     return wheel;
   }, []);
 

@@ -19,6 +19,9 @@ class SegmentA extends AbstractSegment<SegmentPayload, JSX.Element> {
 
   public fulfill(arg: SegmentPayload): JSX.Element {
     console.log('Segment-A:', arg);
+
+    this.defineActions(['swim', 'bike', 'run']);
+
     return (
       <Typography variant='h4'>
         Welcome! You are currently in Segment-A, the first segment in the chain,

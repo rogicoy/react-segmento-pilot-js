@@ -23,7 +23,7 @@ class Wheel<X, Y> {
     return this.live;
   }
 
-  public addSegment(seg: Segment<X, Y>): void {
+  public appendSegment(seg: Segment<X, Y>): void {
     seg.setNext(this.head);
     this.tail.setNext(seg);
     this.tail = seg;

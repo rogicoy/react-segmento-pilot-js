@@ -31,14 +31,14 @@ class TestSegment implements Segment<string, string> {
 describe('Wheel', () => {
   const wheel = new Wheel<string, string>(new TestSegment('a'));
 
-  test('Adding a segments', () => {
-    wheel.addSegment(new TestSegment('b'));
+  test('Appending segments', () => {
+    wheel.appendSegment(new TestSegment('b'));
     expect((wheel.getTail() as TestSegment).data).toBe('b');
 
-    wheel.addSegment(new TestSegment('c'));
+    wheel.appendSegment(new TestSegment('c'));
     expect((wheel.getTail() as TestSegment).data).toBe('c');
 
-    wheel.addSegment(new TestSegment('d'));
+    wheel.appendSegment(new TestSegment('d'));
     expect((wheel.getTail() as TestSegment).data).toBe('d');
 
     expect((wheel.getHead() as TestSegment).data).toBe('a');
