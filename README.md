@@ -9,3 +9,11 @@ As of now, the app is ready for demo. Please feel free to explore the code, and 
 <p style="text-align: center;">
   <img src="assets/segmento-js.jpg" alt="segmento" />
 </p>
+
+### Running the app:
+
+`yarn dev` will launch the app to `localhost:3000`.
+
+<p style="text-align: center;">
+  <img src="assets/segmento-js-screenshot-01.jpg" alt="segmento" />
+</p>
