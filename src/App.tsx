@@ -6,33 +6,72 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Typography,
 } from '@mui/material';
-import { WATCHWORDS } from './core/segments/watchwords';
 import { useMemo, useState } from 'react';
 import Wheel from './core/Wheel';
-import SegmentA from './core/segments/SegmentA';
-import SegmentB from './core/segments/SegmentB';
-import SegmentC from './core/segments/SegmentC';
-import SegmentD from './core/segments/SegmentD';
-import SegmentE from './core/segments/SegmentE';
-import SegmentF from './core/segments/SegmentF';
-import SegmentG from './core/segments/SegmentG';
-import SegmentH from './core/segments/SegmentH';
+import FruitSegment from './core/segments/FruitSegment';
+import Banana from './core/segments/components/Banana';
+import Durian from './core/segments/components/Durian';
+import Lanzones from './core/segments/components/Lanzones';
+import Mango from './core/segments/components/Mango';
+import Mangosteen from './core/segments/components/Mangosteen';
+import Papaya from './core/segments/components/Papaya';
+import Pineapple from './core/segments/components/Pineapple';
+import Rambutan from './core/segments/components/Rambutan';
+
+const watchwords = [
+  'banana',
+  'durian',
+  'lanzones',
+  'mango',
+  'mangosteen',
+  'papaya',
+  'pineapple',
+  'rambutan',
+];
 
 const App = () => {
-  const [watchword, setWatchword] = useState(WATCHWORDS[0]);
+  const [watchword, setWatchword] = useState(watchwords[0]);
 
   const wheel = useMemo(() => {
-    const wheel = new Wheel(new SegmentA());
-    wheel.appendSegment(new SegmentB());
-    wheel.appendSegment(new SegmentC());
-    wheel.appendSegment(new SegmentD());
-    wheel.appendSegment(new SegmentE());
-    wheel.appendSegment(new SegmentF());
-    wheel.appendSegment(new SegmentG());
-    wheel.appendSegment(new SegmentH());
+    const wheel = new Wheel(new FruitSegment(watchwords[0]));
+    wheel.appendSegment(new FruitSegment(watchwords[1]));
+    wheel.appendSegment(new FruitSegment(watchwords[2]));
+    wheel.appendSegment(new FruitSegment(watchwords[3]));
+    wheel.appendSegment(new FruitSegment(watchwords[4]));
+    wheel.appendSegment(new FruitSegment(watchwords[5]));
+    wheel.appendSegment(new FruitSegment(watchwords[6]));
+    wheel.appendSegment(new FruitSegment(watchwords[7]));
     return wheel;
   }, []);
+
+  const display = useMemo(() => {
+    switch (wheel.fulfill({ watchword: watchword })) {
+      case watchwords[0]:
+        return <Banana />;
+      case watchwords[1]:
+        return <Durian />;
+      case watchwords[2]:
+        return <Lanzones />;
+      case watchwords[3]:
+        return <Mango />;
+      case watchwords[4]:
+        return <Mangosteen />;
+      case watchwords[5]:
+        return <Papaya />;
+      case watchwords[6]:
+        return <Pineapple />;
+      case watchwords[7]:
+        return <Rambutan />;
+      default:
+        return (
+          <Typography variant='h4'>
+            Oops! It seems the watchword is invalid.
+          </Typography>
+        );
+    }
+  }, [watchword, wheel]);
 
   return (
     <Box sx={{ m: 4, p: 2, minHeight: 200 }}>
@@ -47,7 +86,7 @@ const App = () => {
               value={watchword}
               onChange={(event) => setWatchword(event.target.value)}
             >
-              {WATCHWORDS.map((word, index) => (
+              {watchwords.map((word, index) => (
                 <MenuItem key={index} value={word}>
                   {word}
                 </MenuItem>
@@ -61,7 +100,7 @@ const App = () => {
             </FormHelperText>
           </FormControl>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 6 }}>{wheel.fulfill({ watchword })}</Grid2>
+        <Grid2 size={{ xs: 12, md: 6 }}>{display}</Grid2>
       </Grid2>
     </Box>
   );
