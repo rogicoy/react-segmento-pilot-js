@@ -47,11 +47,11 @@ abstract class AbstractProgressible {
     }
   }
 
-  private notifyListener(key: string, status: ActionStatus) {
+  protected notifyListener(key: string, status: ActionStatus) {
     this.listener?.(key, status, this.getProgressOverview());
   }
 
-  private getProgressOverview(): ProgressOverview {
+  protected getProgressOverview(): ProgressOverview {
     const actionsObj = Object.fromEntries(this.actions);
 
     const result: ProgressOverview = {
