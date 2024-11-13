@@ -1,6 +1,9 @@
 import AbstractProgressible from './AbstractProgressible';
 import { Segment } from './interfaces';
 
+/**
+ * AbstractSegment is a base class for all segments.
+ */
 abstract class AbstractSegment<X, Y>
   extends AbstractProgressible
   implements Segment<X, Y>

@@ -1,5 +1,11 @@
+/**
+ * ActionStatus is a type that represents the status of an action.
+ */
 export type ActionStatus = 'pending' | 'inprogress' | 'completed';
 
+/**
+ * ProgressOverview contains the number of actions in each status.
+ */
 export interface ProgressOverview {
   pending: number;
   inprogress: number;
@@ -12,6 +18,10 @@ export type ProgressibleListener = (
   overview: ProgressOverview
 ) => void;
 
+/**
+ * AbstractProgressible is a base class for all classes that have progressible
+ * actions.
+ */
 abstract class AbstractProgressible {
   private actions = new Map<string, ActionStatus>();
 

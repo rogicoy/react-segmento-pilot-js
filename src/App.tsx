@@ -8,7 +8,7 @@ import {
   Select,
   Typography,
 } from '@mui/material';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Wheel from './core/Wheel';
 import FruitSegment from './core/segments/FruitSegment';
 import Banana from './core/segments/components/Banana';
@@ -32,6 +32,7 @@ const watchwords = [
 ];
 
 const App = () => {
+  const [segment, setSegment] = useState(watchwords[0]);
   const [watchword, setWatchword] = useState(watchwords[0]);
 
   const wheel = useMemo(() => {
@@ -46,8 +47,14 @@ const App = () => {
     return wheel;
   }, []);
 
-  const display = useMemo(() => {
-    switch (wheel.fulfill({ watchword: watchword })) {
+  useEffect(() => {
+    wheel.fulfill({ watchword }).then((seg) => {
+      setSegment(seg);
+    });
+  }, [segment, watchword, wheel]);
+
+  function setDisplay(): JSX.Element {
+    switch (segment) {
       case watchwords[0]:
         return <Banana />;
       case watchwords[1]:
@@ -71,7 +78,7 @@ const App = () => {
           </Typography>
         );
     }
-  }, [watchword, wheel]);
+  }
 
   return (
     <Box sx={{ m: 4, p: 2, minHeight: 200 }}>
@@ -100,7 +107,7 @@ const App = () => {
             </FormHelperText>
           </FormControl>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 6 }}>{display}</Grid2>
+        <Grid2 size={{ xs: 12, md: 6 }}>{setDisplay()}</Grid2>
       </Grid2>
     </Box>
   );
