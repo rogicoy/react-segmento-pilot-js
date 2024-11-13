@@ -1,7 +1,7 @@
 import AbstractSegment from '../AbstractSegment';
 import { Segment, SegmentPayload } from '../interfaces';
 
-class FruitSegment extends AbstractSegment<SegmentPayload, Promise<string>> {
+class CoffeeSegment extends AbstractSegment<SegmentPayload, Promise<string>> {
   private name: string;
 
   public constructor(
@@ -27,4 +27,4 @@ class FruitSegment extends AbstractSegment<SegmentPayload, Promise<string>> {
   }
 }
 
-export default FruitSegment;
+export default CoffeeSegment;
