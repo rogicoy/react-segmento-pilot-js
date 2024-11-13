@@ -92,7 +92,7 @@ const App = () => {
   return (
     <Box sx={{ m: 4, p: 2, minHeight: 400 }}>
       <Grid2 container spacing={2}>
-        <Grid2 size={{ xs: 12, md: 3 }}>
+        <Grid2 size={{ xs: 12, md: 4 }}>
           <FormControl fullWidth>
             <InputLabel id='watchword-label'>Select a watchword</InputLabel>
             <Select
@@ -116,7 +116,7 @@ const App = () => {
             </FormHelperText>
           </FormControl>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 6 }}>{showMessage()}</Grid2>
+        <Grid2 size={{ xs: 12, md: 8 }}>{showMessage()}</Grid2>
       </Grid2>
     </Box>
   );
