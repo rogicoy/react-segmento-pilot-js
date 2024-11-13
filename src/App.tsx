@@ -58,9 +58,9 @@ const App = () => {
     }
   }, [segment, watchword, wheel]);
 
-  function showMessage(): JSX.Element {
+  function showSegmentContent(): JSX.Element {
     if (loading) {
-      return <Typography variant='h4'>brewing...</Typography>;
+      return <Typography variant='h4'>loading...</Typography>;
     }
 
     switch (segment) {
@@ -91,7 +91,7 @@ const App = () => {
 
   return (
     <Box sx={{ m: 4, p: 2, minHeight: 400 }}>
-      <Grid2 container spacing={2}>
+      <Grid2 container spacing={4} padding={4}>
         <Grid2 size={{ xs: 12, md: 4 }}>
           <FormControl fullWidth>
             <InputLabel id='watchword-label'>Select a watchword</InputLabel>
@@ -116,7 +116,7 @@ const App = () => {
             </FormHelperText>
           </FormControl>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 8 }}>{showMessage()}</Grid2>
+        <Grid2 size={{ xs: 12, md: 8 }}>{showSegmentContent()}</Grid2>
       </Grid2>
     </Box>
   );
