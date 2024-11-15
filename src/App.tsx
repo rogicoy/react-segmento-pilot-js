@@ -4,6 +4,7 @@ import {
   FormHelperText,
   Grid2,
   InputLabel,
+  LinearProgress,
   MenuItem,
   Select,
   Typography,
@@ -58,11 +59,22 @@ const App = () => {
     }
   }, [segment, watchword, wheel]);
 
-  function showSegmentContent(): JSX.Element {
-    if (loading) {
-      return <Typography variant='h4'>loading...</Typography>;
-    }
+  function loadProgress(): JSX.Element {
+    return (
+      <Box sx={{ width: '100%' }}>
+        <Grid2 container spacing={2} padding={2}>
+          <Grid2 size={12}>
+            <LinearProgress />
+          </Grid2>
+          <Grid2 size={12}>
+            <Typography variant='h4'>Brewing...</Typography>
+          </Grid2>
+        </Grid2>
+      </Box>
+    );
+  }
 
+  function loadContent(): JSX.Element {
     switch (segment) {
       case watchwords[0]:
         return <Americano />;
@@ -81,43 +93,56 @@ const App = () => {
       case watchwords[7]:
         return <Mocha />;
       default:
-        return (
-          <Typography variant='h4'>
-            Oops! It seems the watchword is invalid.
-          </Typography>
-        );
+        return <></>;
     }
   }
 
   return (
-    <Box sx={{ m: 4, p: 2, minHeight: 400 }}>
-      <Grid2 container spacing={4} padding={4}>
-        <Grid2 size={{ xs: 12, md: 4 }}>
-          <FormControl fullWidth>
-            <InputLabel id='watchword-label'>Select a watchword</InputLabel>
-            <Select
-              labelId='watchword-label'
-              id='watchword-id'
-              label='Select a watchword'
-              value={watchword}
-              onChange={(event) => setWatchword(event.target.value)}
-            >
-              {watchwords.map((word, index) => (
-                <MenuItem key={index} value={word}>
-                  {word}
-                </MenuItem>
-              ))}
-            </Select>
-            <FormHelperText>
-              The watchword triggers the application to switch to the next
-              segment. Once the watchword meets the conditions for the next
-              segment, the wheel rotates and executes the corresponding
-              operation.
-            </FormHelperText>
-          </FormControl>
+    <Box
+      sx={{
+        height: '100vh',
+        width: '100vw',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Box
+        sx={{
+          minHeight: 600,
+          minWidth: 300,
+          maxWidth: 600,
+        }}
+      >
+        <Grid2 container spacing={4} padding={4}>
+          <Grid2 size={12}>
+            <FormControl>
+              <InputLabel id='watchword-label'>Select a watchword</InputLabel>
+              <Select
+                labelId='watchword-label'
+                id='watchword-id'
+                label='Select a watchword'
+                value={watchword}
+                onChange={(event) => setWatchword(event.target.value)}
+                fullWidth
+              >
+                {watchwords.map((word, index) => (
+                  <MenuItem key={index} value={word}>
+                    {word}
+                  </MenuItem>
+                ))}
+              </Select>
+              <FormHelperText sx={{ textAlign: 'justify' }}>
+                The watchword triggers the application to switch to the next
+                segment. Once the watchword meets the conditions for the next
+                segment, the wheel rotates and executes the corresponding
+                operation.
+              </FormHelperText>
+            </FormControl>
+          </Grid2>
+          <Grid2 size={12}>{loading ? loadProgress() : loadContent()}</Grid2>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 8 }}>{showSegmentContent()}</Grid2>
-      </Grid2>
+      </Box>
     </Box>
   );
 };

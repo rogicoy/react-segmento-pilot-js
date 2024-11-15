@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 
 const Espresso = () => {
   return (
-    <Typography variant='h4'>
+    <Typography variant='h4' sx={{ textAlign: 'justify' }}>
       Hiii! You're in <b>Espresso Segment</b>. Selecting <b>flatwhite</b> will
       take you to <b>Flatwhite Segment</b>, while selecting other coffee will
       keep you here.
