@@ -1,7 +1,7 @@
-import AbstractSegment from '../AbstractSegment';
-import { Segment, SegmentPayload } from '../interfaces';
+import BaseSegment from '../segment/BaseSegment';
+import { Segment, SegmentPayload } from '../segment/types';
 
-class CoffeeSegment extends AbstractSegment<SegmentPayload, Promise<string>> {
+class CoffeeSegment extends BaseSegment<SegmentPayload, Promise<string>> {
   private name: string;
 
   public constructor(

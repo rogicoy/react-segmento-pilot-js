@@ -1,11 +1,11 @@
-import AbstractProgressible from './AbstractProgressible';
-import { Segment } from './interfaces';
+import BaseProgressible from '../progressible/BaseProgressible';
+import { Segment } from './types';
 
 /**
- * AbstractSegment is a base class for all segments.
+ * BaseSegment is a base class for all segments.
  */
-abstract class AbstractSegment<X, Y>
-  extends AbstractProgressible
+abstract class BaseSegment<X, Y>
+  extends BaseProgressible
   implements Segment<X, Y>
 {
   private next: Segment<X, Y> | undefined;
@@ -28,4 +28,4 @@ abstract class AbstractSegment<X, Y>
   }
 }
 
-export default AbstractSegment;
+export default BaseSegment;

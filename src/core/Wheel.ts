@@ -1,4 +1,4 @@
-import { Segment } from './interfaces';
+import { Segment } from './segment/types';
 
 class Wheel<X, Y> {
   private head: Segment<X, Y>;

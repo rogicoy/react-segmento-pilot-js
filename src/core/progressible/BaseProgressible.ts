@@ -1,31 +1,21 @@
-/**
- * ActionStatus is a type that represents the status of an action.
- */
-export type ActionStatus = 'pending' | 'inprogress' | 'completed';
+import {
+  ProgressibleListener,
+  ProgressiveActionStatus,
+  ProgressOverview,
+} from './types';
 
 /**
- * ProgressOverview contains the number of actions in each status.
- */
-export interface ProgressOverview {
-  pending: number;
-  inprogress: number;
-  completed: number;
-}
-
-export type ProgressibleListener = (
-  key: string,
-  status: ActionStatus,
-  overview: ProgressOverview
-) => void;
-
-/**
- * AbstractProgressible is a base class for all classes that have progressible
+ * BaseProgressible is a base class for all classes that have progressible
  * actions.
  */
-abstract class AbstractProgressible {
-  private actions = new Map<string, ActionStatus>();
+abstract class BaseProgressible {
+  private actions = new Map<string, ProgressiveActionStatus>();
 
   private listener: ProgressibleListener | undefined;
+
+  public constructor() {
+    this.listener = undefined;
+  }
 
   public setListener(listener: ProgressibleListener) {
     this.listener = listener;
@@ -57,7 +47,7 @@ abstract class AbstractProgressible {
     }
   }
 
-  protected notifyListener(key: string, status: ActionStatus) {
+  protected notifyListener(key: string, status: ProgressiveActionStatus) {
     this.listener?.(key, status, this.getProgressOverview());
   }
 
@@ -87,4 +77,4 @@ abstract class AbstractProgressible {
   }
 }
 
-export default AbstractProgressible;
+export default BaseProgressible;

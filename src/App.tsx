@@ -11,15 +11,15 @@ import {
 } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import Wheel from './core/Wheel';
-import CoffeeSegment from './core/segments/CoffeeSegment';
-import Americano from './core/segments/components/Americano';
-import Cappucino from './core/segments/components/Cappucino';
-import Cortado from './core/segments/components/Cortado';
-import Espresso from './core/segments/components/Espresso';
-import Flatwhite from './core/segments/components/Flatwhite';
-import Latte from './core/segments/components/Latte';
-import Machiato from './core/segments/components/Machiato';
-import Mocha from './core/segments/components/Mocha';
+import CoffeeSegment from './core/components/CoffeeSegment';
+import Americano from './core/components/views/Americano';
+import Cappucino from './core/components/views/Cappucino';
+import Cortado from './core/components/views/Cortado';
+import Espresso from './core/components/views/Espresso';
+import Flatwhite from './core/components/views/Flatwhite';
+import Latte from './core/components/views/Latte';
+import Machiato from './core/components/views/Machiato';
+import Mocha from './core/components/views/Mocha';
 
 const watchwords = [
   'americano',
