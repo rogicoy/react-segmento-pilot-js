@@ -1,4 +1,5 @@
 import {
+  Progressible,
   ProgressibleListener,
   ProgressiveActionStatus,
   ProgressOverview,
@@ -8,7 +9,7 @@ import {
  * BaseProgressible is a base class for all classes that have progressible
  * actions.
  */
-abstract class BaseProgressible {
+abstract class BaseProgressible implements Progressible {
   private actions = new Map<string, ProgressiveActionStatus>();
 
   private listener: ProgressibleListener | undefined;

@@ -21,10 +21,14 @@ class CoffeeSegment extends BaseSegment<SegmentPayload, Promise<string>> {
 
     return new Promise((resolve) => {
       const actions = [
-        'roasting-beans',
-        'grinding-beans',
-        'brewing-coffee',
-        'adjusting-taste',
+        'action-1',
+        'action-2',
+        'action-3',
+        'action-4',
+        'action-5',
+        'action-6',
+        'action-7',
+        'action-8',
       ];
 
       this.defineActions(actions);

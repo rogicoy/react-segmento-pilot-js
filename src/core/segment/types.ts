@@ -1,3 +1,5 @@
+import { Progressible } from '../progressible/types';
+
 export interface SegmentPayload {
   watchword: string;
 }
@@ -5,7 +7,7 @@ export interface SegmentPayload {
 /**
  * The Segment represents a single node within the wheel (or segment chain).
  */
-export interface Segment<X = unknown, Y = unknown> {
+export interface Segment<X = unknown, Y = unknown> extends Progressible {
   /**
    * This function checks whether the argument meets the scope conditions of the
    * segment.

@@ -17,3 +17,7 @@ export type ProgressibleListener = (
   status: ProgressiveActionStatus,
   overview: ProgressOverview
 ) => void;
+
+export interface Progressible {
+  setListener: (listener: ProgressibleListener) => void;
+}

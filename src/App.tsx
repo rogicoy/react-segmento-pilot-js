@@ -20,6 +20,7 @@ import Flatwhite from './core/components/views/Flatwhite';
 import Latte from './core/components/views/Latte';
 import Machiato from './core/components/views/Machiato';
 import Mocha from './core/components/views/Mocha';
+import { ProgressOverview } from './core/progressible/types';
 
 const watchwords = [
   'americano',
@@ -36,9 +37,20 @@ const App = () => {
   const [segment, setSegment] = useState(watchwords[0]);
   const [watchword, setWatchword] = useState(watchwords[0]);
   const [loading, setLoading] = useState(false);
+  const [progOv, setProgOv] = useState({
+    pending: 0,
+    inprogress: 0,
+    completed: 0,
+  } as ProgressOverview);
 
   const wheel = useMemo(() => {
-    const wheel = new Wheel(new CoffeeSegment(watchwords[0]));
+    const wheel = new Wheel(
+      new CoffeeSegment(watchwords[0]),
+      (_key, _status, overview) => {
+        setProgOv(overview);
+      }
+    );
+
     wheel.appendSegment(new CoffeeSegment(watchwords[1]));
     wheel.appendSegment(new CoffeeSegment(watchwords[2]));
     wheel.appendSegment(new CoffeeSegment(watchwords[3]));
@@ -46,6 +58,7 @@ const App = () => {
     wheel.appendSegment(new CoffeeSegment(watchwords[5]));
     wheel.appendSegment(new CoffeeSegment(watchwords[6]));
     wheel.appendSegment(new CoffeeSegment(watchwords[7]));
+
     return wheel;
   }, []);
 
@@ -60,6 +73,9 @@ const App = () => {
   }, [segment, watchword, wheel]);
 
   function loadProgress(): JSX.Element {
+    const { pending, inprogress, completed } = progOv;
+    const total = pending + inprogress + completed;
+
     return (
       <Box sx={{ width: '100%' }}>
         <Grid2 container spacing={2} padding={2}>
@@ -67,7 +83,9 @@ const App = () => {
             <LinearProgress />
           </Grid2>
           <Grid2 size={12}>
-            <Typography variant='h4'>Brewing...</Typography>
+            <Typography variant='h6' sx={{ color: '#000000' }}>
+              {completed} of {total} actions completed
+            </Typography>
           </Grid2>
         </Grid2>
       </Box>
